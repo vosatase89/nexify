@@ -18,9 +18,12 @@ export async function POST(req: Request) {
 
     const data = await res.json();
 
-    return NextResponse.json({
-      reply: data.output?.[0]?.content?.[0]?.text || "No response",
-    });
+    const text =
+      data.output_text ||
+      data.output?.[0]?.content?.[0]?.text ||
+      "No response";
+
+    return NextResponse.json({ reply: text });
 
   } catch (err) {
     console.error(err);
