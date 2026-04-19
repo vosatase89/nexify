@@ -19,9 +19,8 @@ export async function POST(req: Request) {
     const data = await res.json();
 
     return NextResponse.json({
-      reply: data.output?.[0]?.content?.[0]?.text || "No reply",
-    });
-
+  reply: data.output_text || JSON.stringify(data),
+});
   } catch (err) {
     console.error(err);
     return NextResponse.json({ reply: "API error" });
