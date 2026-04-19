@@ -19,9 +19,9 @@ export async function POST(req: Request) {
     const data = await res.json();
 
     const text =
-      data.output_text ||
-      data.output?.[0]?.content?.[0]?.text ||
-      "No response";
+  data.output?.map((o: any) =>
+    o.content?.map((c: any) => c.text).join("")
+  ).join("") || "No response";
 
     return NextResponse.json({ reply: text });
 
