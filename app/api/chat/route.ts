@@ -21,9 +21,11 @@ export async function POST(req: Request) {
     return Response.json({
       reply: response.choices?.[0]?.message?.content || "No response",
     });
-  } catch (err: any) {
-    return Response.json({
-      error: err.message,
-    }, { status: 500 });
+  } catch (error) {
+    console.error(error);
+    return Response.json(
+      { reply: "Server error" },
+      { status: 500 }
+    );
   }
 }
