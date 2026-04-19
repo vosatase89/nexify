@@ -11,7 +11,7 @@ export async function POST(req: Request) {
         { status: 400 }
       );
     }
-
+console.log("API KEY:", process.env.OPENAI_API_KEY);
     const res = await fetch("https://api.openai.com/v1/responses", {
       method: "POST",
       headers: {
