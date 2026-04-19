@@ -4,8 +4,7 @@ export async function POST(req: Request) {
   try {
     const { message } = await req.json();
 
-    const res = await fetch("https://api.openai.com/v1/responses", {
-      method: "POST",
+    const res = await fetchconst res = await fetch("https://nexify-alpha.vercel.app/api/chat", {      method: "POST",
       headers: {
         "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
         "Content-Type": "application/json",
