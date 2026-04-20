@@ -22,19 +22,17 @@ export default function Page() {
       });
 
       const data = await res.json();
-      setResponse(data.reply);
+      setResponse(data.reply || "No response");
     } catch (err) {
       setResponse("Error");
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   return (
     <main style={{ padding: 40 }}>
-      <button onClick={handleClick}>
-        Ask Nexify
-      </button>
+      <button onClick={handleClick}>Ask Nexify</button>
 
       <div style={{ marginTop: 20 }}>
         {loading ? "Loading..." : response}
